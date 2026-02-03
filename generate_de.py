@@ -20,7 +20,8 @@ def get_days() -> list:
     day_4 = (datetime.combine(datetime.now(), time(0, 0)) + timedelta(4))
     day_5 = (datetime.combine(datetime.now(), time(0, 0)) + timedelta(5))
     day_6 = (datetime.combine(datetime.now(), time(0, 0)) + timedelta(6))
-    return [now, day_1, day_2, day_3, day_4, day_5, day_6]
+    day_7 = (datetime.combine(datetime.now(), time(0, 0)) + timedelta(7))
+    return [now, day_1, day_2, day_3, day_4, day_5, day_6, day_7]
 
 
 def build_xmltv(channels: list, programmes: list) -> bytes:
@@ -44,7 +45,7 @@ Make the channels and programmes into something readable by XMLTV
             return datetime.fromtimestamp(val, timezone.utc).astimezone(tz).strftime(dt_format)
 
     data = etree.Element("tv")
-    data.set("generator-info-name", "Rakuten DE EPG for 6 Days")
+    data.set("generator-info-name", "Rakuten DE EPG for 7 Days")
     data.set("generator-info-url", "https://github.com//Fellfresse/Rakuten-DACH-EPG")
     for ch in channels:
         channel = etree.SubElement(data, "channel")
